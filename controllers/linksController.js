@@ -40,3 +40,28 @@ exports.createLink = async (req, res, next) => {
           console.log(err);
      }
 };
+
+exports.getLink = async (req, res, next) => { 
+
+     const { url } = req.params;
+     const link = await Links.findOne({ url });
+
+     if(!link) {
+          res.status(404).json({ msg: 'Link not found' });
+          return next();
+     }
+
+     res.json({ file: link.name})
+     const { download, name } = link;
+
+     if(download === 1) {
+          req.file = name;
+
+          await Links.findOneAndRemove(req.params.url);
+          next();
+     } else {
+          link.download--;
+          await link.save();
+     }
+
+};
