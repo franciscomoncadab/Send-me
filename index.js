@@ -10,7 +10,7 @@ const optionsCors = {
 }
 app.use(cors(optionsCors));
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 4000;
 app.use(express.json());
 
 app.use(express.static('uploads'));
