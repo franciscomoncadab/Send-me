@@ -6,15 +6,15 @@ const { check } = require('express-validator');
 
 router.post('/', 
      [
-          check('email', 'Please enter a valid email').isEmail(),
-          check('password', 'Password is required').not().isEmpty(),
+          check('email', 'Digita un email valido por favor').isEmail(),
+          check('password', 'Digita un password').not().isEmpty(),
      ],
-     authController.authUser
+     authController.autenticarUsuario
 );
 
 router.get('/',
      auth,
-     authController.userAuthentication
+     authController.usuarioAutenticado
 );
 
 module.exports = router;

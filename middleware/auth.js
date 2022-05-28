@@ -5,12 +5,15 @@ module.exports = (req, res, next) => {
      const authHeader = req.get('Authorization');
      if (authHeader) {
           const token = authHeader.split(' ')[1];
+
+          if(token) {
      
-          try {
-               const user = jwt.verify(token, process.env.JWT_SECRET);
-               req.user = user;
-          } catch (err) {
-               console.log(err);
+               try {
+                    const usuario = jwt.verify(token, process.env.JWT_SECRET);
+                    req.usuario = usuario;
+               } catch (err) {
+                    console.log(err);
+               }
           }
      }
      return next();

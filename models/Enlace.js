@@ -1,24 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const linksSchema = new Schema({ 
+const enlacesSchema = new Schema({ 
      url: {
           type: String,
           required: true,
      },
-     name: {
+     nombre: {
           type: String,
           required: true,
      },
-     original_name: {
+     nombre_original: {
           type: String,
           required: true,
      },
-     download: {
+     descargas: {
           type: Number,
           default: 1,
      },
-     author: {
+     autor: {
           type: Schema.Types.ObjectId,
           ref: 'User',
           default: null,
@@ -27,10 +27,10 @@ const linksSchema = new Schema({
           type: String,
           default: null,
      },
-     created_at: { 
+     creado: { 
           type: Date,
           default: Date.now,
      }
 })
 
-module.exports = mongoose.model('Links', linksSchema);
+module.exports = mongoose.model('Enlaces', enlacesSchema);
