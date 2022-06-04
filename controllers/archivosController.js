@@ -21,7 +21,7 @@ exports.subirArchivo = async (req, res, next) => {
 
      const upload = multer(configuracionMulter).single('archivo');
 
-     upload(req, res, (error) => { 
+     upload(req, res, async (error) => { 
           console.log(req.file)
 
           if(!error) {
